@@ -108,8 +108,5 @@ public class Conexion {
     }
 
     public static void main(String[] args) {
-        Conexion conexion = new Conexion();
-        conexion.conectar();
-        conexion.desconectar();
     }
 }

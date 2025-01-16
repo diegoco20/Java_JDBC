@@ -16,13 +16,13 @@ public class Java_JDBC_Git {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // TODO code application logic here
         UsuarioConection Usuarioconexion = new UsuarioConection();
         Usuarioconexion.conectar();
         Usuario fabricante = new Usuario(100, "Diego");
         Usuarioconexion.guardarUsuario(fabricante);
-        Usuarioconexion.consultarUsuario();
+        Usuarioconexion.consultarUsuarioId(100);
         
         
         Usuarioconexion.desconectar();
