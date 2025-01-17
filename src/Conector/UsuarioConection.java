@@ -108,18 +108,20 @@ public final class UsuarioConection extends Conexion {
     }
 }
     
-    public void consultarUsuarioId(int id) throws Exception {   
-
+    public Usuario consultarUsuarioId(int id) throws Exception {
+        
+        Usuario usuario = null;
+        
         try {
             String sql = "SELECT * FROM fabricante WHERE codigo = " + id + ";";
             
             consultarBase(sql);
             
-            Usuario usuario = null;
-            
             if (resultado.next()){
                 System.out.println("Usuario encontrado");
                 System.out.println("Id: " + id + ", Nombre: " + resultado.getString(2));
+                usuario = new Usuario(resultado.getInt(1), resultado.getString(2));
+                
             } else {
                 System.out.println("Usuario no encontrado");
             }
@@ -127,6 +129,7 @@ public final class UsuarioConection extends Conexion {
         } catch (SQLException e) {
             desconectar();
         }
+        return usuario;
     }
-    
 }
+

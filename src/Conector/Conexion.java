@@ -79,8 +79,7 @@ public class Conexion {
 }
     
     protected void InstarModificarEliminar(String sql){
-        Connection cx = null;
-        Statement sentencia = null;
+        
         try {
             cx = conectar();
             if (cx != null) {
@@ -104,7 +103,9 @@ public class Conexion {
            resultado = sentencia.executeQuery(sql);
         } catch (SQLException ex){
             throw ex;
-        }
+        } /*finally {
+            desconectar();
+        }*/
     }
 
     public static void main(String[] args) {

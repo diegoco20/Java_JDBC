@@ -24,8 +24,8 @@ public class Java_JDBC_Git {
         
         Usuarioconexion.guardarUsuario(fabricante);
        
+
         Usuarioconexion.consultarUsuarioId(100);
-        
         
         Usuarioconexion.desconectar();
     }
