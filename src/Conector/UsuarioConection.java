@@ -24,20 +24,16 @@ public final class UsuarioConection extends Conexion {
             }
 
             // Verifica si el usuario ya existe por medio del código 
-            String checkSql = "SELECT COUNT(*) FROM fabricante WHERE codigo = '" + usuario.getCodigo() + "';";
-            conectar();
-            sentencia = cx.createStatement();
-            resultado = sentencia.executeQuery(checkSql);
+            String checkSql = "SELECT COUNT(*) FROM fabricante WHERE codigo = " + usuario.getCodigo() + ";";
+            consultarBase(checkSql);
 
             if (resultado.next()) {
-                int count = resultado.getInt(1);  // El conteo de registros con el código
-                System.out.println("Cantidad de registros con ese código: " + count);
+                int count = resultado.getInt(1);
                 
                 if (count > 0) {
-                throw new Exception("El código ya existe en la base de datos.");
-    }
+                    throw new Exception("El código ya existe en la base de datos.");
+                }                   
             }
-            
             
             
             // Si el usuario no existe, insertar el nuevo usuario
@@ -48,7 +44,7 @@ public final class UsuarioConection extends Conexion {
             System.out.println("Usuario con código: " + usuario.getCodigo() + " agregado");
 
         } catch (Exception e) {
-  
+            System.out.println("Error: " + e.getMessage());
         }
     }
     
@@ -112,11 +108,9 @@ public final class UsuarioConection extends Conexion {
     }
 }
     
-    public void consultarUsuarioId(int id) throws Exception {
-        
+    public void consultarUsuarioId(int id) throws Exception {   
 
         try {
-            
             String sql = "SELECT * FROM fabricante WHERE codigo = " + id + ";";
             
             consultarBase(sql);

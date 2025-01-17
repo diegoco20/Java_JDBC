@@ -21,7 +21,9 @@ public class Java_JDBC_Git {
         UsuarioConection Usuarioconexion = new UsuarioConection();
         Usuarioconexion.conectar();
         Usuario fabricante = new Usuario(100, "Diego");
+        
         Usuarioconexion.guardarUsuario(fabricante);
+       
         Usuarioconexion.consultarUsuarioId(100);
         
         
